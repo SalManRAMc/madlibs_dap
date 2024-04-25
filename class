@@ -42,13 +42,16 @@ abstract class Madlibs
         this.str4 = str4;
     }
 }
-class love : Madlibs
+class Love : Madlibs
 {
-        string template1 = "lsdjfvsdiuhvisudhviusghviusgv _<1>_ iwbfpiqwegbfpiwergp-iwugerhpirwhgpiuh _<2>_ leighbnjpaefirbuhepfuhbehugb _<3>_ sighiarfgbhupfrbhprhrbuprbhv _<4>_ aejrhgpaorehgbprajhgbpaejrhgbpaefjbh _<5>_ gsjhstrjhsrnj.";
-        string template2 = "lsdjfvsdiuhvisudhviusghviusgv _<1>_ iwbfpiqwegbfpiwergp-iwugerhpirwhgpiuh _<2>_ leighbnjpaefirbuhepfuhbehugb _<3>_ sighiarfgbhupfrbhprhrbuprbhv _<4>_ aejrhgpaorehgbprajhgbpaejrhgbpaefjbh _<5>_ gsjhstrjhsrnshbghbj.";
-
-
-}
+        public string template1 = "Once upon a time, in a ___[1]___ far away, there lived a ___[2]___ named ___[3]___. " +
+            "One sunny day, while strolling through the ___[4]___, they stumbled upon a ___[5]___." +
+            "\r\n\r\nTheir eyes met, and in that moment, they knew they had found their ___[6]___.";
+        string template2 = "In the bustling streets of ___[1]___, amidst the crowd, there stood a ___[2]___ named ___[3]___. " +
+            "One rainy evening, while seeking shelter in a cozy ___[4]___, they crossed paths with a ___[5]___." +
+            "\r\n\r\nTheir laughter echoed in the air, and in that instant, they felt a spark of ___[6]___.\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+       
+    }
 class any :Madlibs
     {
 
