@@ -16,13 +16,15 @@ class MadLibs
 
     static void CreateTemplate()
     {
-    Console.WriteLine("Enter the Mad Libs template:");
-    string template = Console.ReadLine();
-    using (StreamWriter writer = File.AppendText("madlibs_templates.txt"))
-    {
-       writer.WriteLine(template);
-    }
-    Console.WriteLine("Template saved successfully!");
+        Console.WriteLine("Enter template name:");
+        string TemplateName = Console.ReadLine();
+        Console.WriteLine("Enter the Mad Libs template:");
+        string Template = Console.ReadLine();
+        using (StreamWriter writer = File.AppendText(TemplateName))
+        {
+            writer.WriteLine(Template);
+        }
+        Console.WriteLine("Template saved successfully!");
     }
 }
 
