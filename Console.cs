@@ -1,10 +1,29 @@
 using System;
+using System.IO;
+using System.Collections.Generic;
 
-class MadApp
+class MadLibs
 {
     static void Main()
     {
-        Console.WriteLine("Hello World!");
-        
+        PlayGame();
+    }
+
+    static void PlayGame()
+    {
+
+    }
+
+    static void CreateTemplate()
+    {
+    Console.WriteLine("Enter the Mad Libs template:");
+    string template = Console.ReadLine();
+    using (StreamWriter writer = File.AppendText("madlibs_templates.txt"))
+    {
+       writer.WriteLine(template);
+    }
+    Console.WriteLine("Template saved successfully!");
     }
 }
+
+```
