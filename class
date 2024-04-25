@@ -1,0 +1,43 @@
+class Madlibs
+{
+    string noun1;
+    string noun2;
+    string noun3;
+    string noun4;
+    int num1;
+    int num2;
+    string adjective1;
+    string adjective2;
+
+    public void insert(string noun1,string noun2,string noun3,string noun4,int num1,int num2,string adjective1,string adjective2)
+    {
+        this.noun1 = noun1;
+        this.noun2 = noun2;
+        this.noun3 = noun3;  
+        this.noun4 = noun4;
+        this.num1 = num1;
+        this.num2 = num2;
+        this.adjective1 = adjective1;
+        this.adjective2 = adjective2;
+    }
+    public void insert(string noun1, string noun2, string noun3, string noun4, int num1, int num2, string adjective1)
+    {
+        this.noun1 = noun1;
+        this.noun2 = noun2;
+        this.noun3 = noun3;
+        this.noun4 = noun4;
+        this.num1 = num1;
+        this.num2 = num2;
+        this.adjective1 = adjective1;
+    }
+    public void insert(string noun1, string noun2, string noun3, string noun4, int num1, string adjective1, string adjective2)
+    {
+        this.noun1 = noun1;
+        this.noun2 = noun2;
+        this.noun3 = noun3;
+        this.noun4 = noun4;
+        this.num1 = num1;
+        this.adjective1 = adjective1;
+        this.adjective2 = adjective2;
+    }
+}
