@@ -1,58 +1,72 @@
-abstract class Madlibs
+using Microsoft.VisualBasic;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
+using System.Transactions;
+using System.Xml.Linq;
+
+namespace MadlibsApp
 {
-    string template;
-    string str1;
-    string str2;
-    string str3;
-    string str4;
-    string str5;
-    string str6;
-    string str7;
-    string str8;
-    
-    public void createtemplate(string template)
-    { 
-        this.template = template; 
-    }
-    public void insert(string str1, string str2, string str3, string str4, string str5, string str6,string str7,string str8)
+    class Madlibs
     {
-        this.str1 = str1;
-        this.str2 = str2;
-        this.str3 = str3;
-        this.str4 = str4;
-        this.str5 = str5;
-        this.str6 = str6;
-        this.str7 = str7;
-        this.str8 = str8;
+        public string Change(string template,string str1, string str2, string str3, string str4, string str5, string str6)
+        {
+            template = template.Replace("[1] ____________", "_" + str1 + "_");
+            template = template.Replace("[2] ____________", "_" + str2 + "_");
+            template = template.Replace("[3] ____________", "_" + str3 + "_");
+            template = template.Replace("[4] ____________", "_" + str4 + "_");
+            template = template.Replace("[5] ____________", "_" + str5 + "_");
+            template = template.Replace("[6] ____________", "_" + str6 + "_");
+            return template;
+        }
     }
-    public void insert(string str1, string str2, string str3, string str4, string str5, string str6)
+    class Love : Madlibs
     {
-        this.str1 = str1;
-        this.str2 = str2;
-        this.str3 = str3;
-        this.str4 = str4;
-        this.str5 = str5;
-        this.str6 = str6;
+         string[] template = {"Once upon a time, in a [1] ____________ far away, there lived a [2] ____________ named [3] ____________.\n" +
+            "One sunny day, while strolling through the [4] ____________, they stumbled upon a [5] ____________." +
+            "\r\n\r\nTheir eyes met, and in that moment, they knew they had found their [6] ____________.",
+            "In the bustling streets of [1] ____________, amidst the crowd, there stood a [2] ____________ named [3] ____________.\n" +
+            "One rainy evening, while seeking shelter in a cozy [4] ____________, they crossed paths with a [5] ____________." +
+            "\r\n\r\nTheir laughter echoed in the air, and in that instant, they felt a spark of [6] ____________.",
+            "In a quaint village nestled among [1] ____________ hills, lived a [2] ____________ named [3] ____________.\n" +
+                "One starry night, while gazing at the shimmering [4] ____________, they encountered a mysterious [5] ____________." +
+                "Their conversation flowed like a gentle stream, and in that enchanted moment, they sensed the magic of [6] ____________."};
+        public string Take(int x) 
+        {
+            return template[x];
+        }
     }
-    public void insert(string str1, string str2, string str3, string str4)
+    class Any :Madlibs
     {
-        this.str1 = str1;
-        this.str2 = str2;
-        this.str3 = str3;
-        this.str4 = str4;
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Love love = new Love();
+            Random random = new Random();
+            string k=love.Take(random.Next(0,3));
+            Console.WriteLine(k+"\n\n\n\n");
+            Console.WriteLine("Enter first word : ");
+            string str1= Console.ReadLine();
+            Console.WriteLine("Enter second word : ");
+            string str2 = Console.ReadLine();
+            Console.WriteLine("Enter third word : ");
+            string str3 = Console.ReadLine();
+            Console.WriteLine("Enter fourth word : ");
+            string str4 = Console.ReadLine();
+            Console.WriteLine("Enter fifth word : ");
+            string str5 = Console.ReadLine();
+            Console.WriteLine("Enter sixth word : ");
+            string str6 = Console.ReadLine();
+
+            k=love.Change(k, str1, str2, str3, str4, str5, str6);
+
+            Console.WriteLine("\n-----------------------------------------------\n"+ k );
+
+            Console.ReadKey();
+        }
     }
 }
-class Love : Madlibs
-{
-        public string template1 = "Once upon a time, in a ___[1]___ far away, there lived a ___[2]___ named ___[3]___. " +
-            "One sunny day, while strolling through the ___[4]___, they stumbled upon a ___[5]___." +
-            "\r\n\r\nTheir eyes met, and in that moment, they knew they had found their ___[6]___.";
-        string template2 = "In the bustling streets of ___[1]___, amidst the crowd, there stood a ___[2]___ named ___[3]___. " +
-            "One rainy evening, while seeking shelter in a cozy ___[4]___, they crossed paths with a ___[5]___." +
-            "\r\n\r\nTheir laughter echoed in the air, and in that instant, they felt a spark of ___[6]___.\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
-       
-    }
-class any :Madlibs
-    {
-
-    }
