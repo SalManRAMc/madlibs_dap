@@ -27,5 +27,3 @@ class MadLibs
         Console.WriteLine("Template saved successfully!");
     }
 }
-
-```
