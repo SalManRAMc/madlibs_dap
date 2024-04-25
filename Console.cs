@@ -26,4 +26,23 @@ class MadLibs
         }
         Console.WriteLine("Template saved successfully!");
     }
+    static string LoadTemplate(string TemplateName)
+    {
+
+    }
+
+    static string ParseTemplate()
+    {
+
+    }
+
+    static string CollectWord()
+    {
+
+    }
+    
+    static void FillTemplate()
+    {
+        
+    }
 }
