@@ -42,3 +42,14 @@ abstract class Madlibs
         this.str4 = str4;
     }
 }
+class love : Madlibs
+{
+        string template1 = "lsdjfvsdiuhvisudhviusghviusgv _<1>_ iwbfpiqwegbfpiwergp-iwugerhpirwhgpiuh _<2>_ leighbnjpaefirbuhepfuhbehugb _<3>_ sighiarfgbhupfrbhprhrbuprbhv _<4>_ aejrhgpaorehgbprajhgbpaejrhgbpaefjbh _<5>_ gsjhstrjhsrnj.";
+        string template2 = "lsdjfvsdiuhvisudhviusghviusgv _<1>_ iwbfpiqwegbfpiwergp-iwugerhpirwhgpiuh _<2>_ leighbnjpaefirbuhepfuhbehugb _<3>_ sighiarfgbhupfrbhprhrbuprbhv _<4>_ aejrhgpaorehgbprajhgbpaejrhgbpaefjbh _<5>_ gsjhstrjhsrnshbghbj.";
+
+
+}
+class any :Madlibs
+    {
+
+    }
