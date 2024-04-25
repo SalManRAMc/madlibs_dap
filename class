@@ -1,43 +1,44 @@
-class Madlibs
+abstract class Madlibs
 {
-    string noun1;
-    string noun2;
-    string noun3;
-    string noun4;
-    int num1;
-    int num2;
-    string adjective1;
-    string adjective2;
-
-    public void insert(string noun1,string noun2,string noun3,string noun4,int num1,int num2,string adjective1,string adjective2)
-    {
-        this.noun1 = noun1;
-        this.noun2 = noun2;
-        this.noun3 = noun3;  
-        this.noun4 = noun4;
-        this.num1 = num1;
-        this.num2 = num2;
-        this.adjective1 = adjective1;
-        this.adjective2 = adjective2;
+    string template;
+    string str1;
+    string str2;
+    string str3;
+    string str4;
+    string str5;
+    string str6;
+    string str7;
+    string str8;
+    
+    public void createtemplate(string template)
+    { 
+        this.template = template; 
     }
-    public void insert(string noun1, string noun2, string noun3, string noun4, int num1, int num2, string adjective1)
+    public void insert(string str1, string str2, string str3, string str4, string str5, string str6,string str7,string str8)
     {
-        this.noun1 = noun1;
-        this.noun2 = noun2;
-        this.noun3 = noun3;
-        this.noun4 = noun4;
-        this.num1 = num1;
-        this.num2 = num2;
-        this.adjective1 = adjective1;
+        this.str1 = str1;
+        this.str2 = str2;
+        this.str3 = str3;
+        this.str4 = str4;
+        this.str5 = str5;
+        this.str6 = str6;
+        this.str7 = str7;
+        this.str8 = str8;
     }
-    public void insert(string noun1, string noun2, string noun3, string noun4, int num1, string adjective1, string adjective2)
+    public void insert(string str1, string str2, string str3, string str4, string str5, string str6)
     {
-        this.noun1 = noun1;
-        this.noun2 = noun2;
-        this.noun3 = noun3;
-        this.noun4 = noun4;
-        this.num1 = num1;
-        this.adjective1 = adjective1;
-        this.adjective2 = adjective2;
+        this.str1 = str1;
+        this.str2 = str2;
+        this.str3 = str3;
+        this.str4 = str4;
+        this.str5 = str5;
+        this.str6 = str6;
+    }
+    public void insert(string str1, string str2, string str3, string str4)
+    {
+        this.str1 = str1;
+        this.str2 = str2;
+        this.str3 = str3;
+        this.str4 = str4;
     }
 }
