@@ -2,7 +2,7 @@
 
 <ul>
 <li> Current Goals: Make madlibs app </li>
-<li> Create a Graphical User Interface </li>
+<li> Create a Graphical User Interface (optional)</li>
 <li> App must be able to create new templates </li>
 <li> App must be able to reload and save used/new templates </li>
 </ul>
