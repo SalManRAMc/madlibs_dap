@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading;
 using System.Transactions;
 using System.Xml.Linq;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MadlibsApp
 {
     class Madlibs
     {
+        string h;
         public string Change(string template,string str1, string str2, string str3, string str4, string str5, string str6)
         {
             template = template.Replace("[1] ____________", "_" + str1 + "_");
@@ -21,10 +25,14 @@ namespace MadlibsApp
             template = template.Replace("[6] ____________", "_" + str6 + "_");
             return template;
         }
+        virtual public string Take(int x)
+        {
+            return h;
+        }
     }
     class Love : Madlibs
     {
-         string[] template = {"Once upon a time, in a [1] ____________ far away, there lived a [2] ____________ named [3] ____________.\n" +
+         string[] template = { "Once upon a time, in a [1] ____________ far away, there lived a [2] ____________ named [3] ____________.\n" +
             "One sunny day, while strolling through the [4] ____________, they stumbled upon a [5] ____________." +
             "\r\n\r\nTheir eyes met, and in that moment, they knew they had found their [6] ____________.",
             "In the bustling streets of [1] ____________, amidst the crowd, there stood a [2] ____________ named [3] ____________.\n" +
@@ -32,45 +40,75 @@ namespace MadlibsApp
             "\r\n\r\nTheir laughter echoed in the air, and in that instant, they felt a spark of [6] ____________.",
             "In a quaint village nestled among [1] ____________ hills, lived a [2] ____________ named [3] ____________.\n" +
                 "One starry night, while gazing at the shimmering [4] ____________, they encountered a mysterious [5] ____________." +
-                "Their conversation flowed like a gentle stream, and in that enchanted moment, they sensed the magic of [6] ____________."};
-        public string Take(int x) 
+                "Their conversation flowed like a gentle stream, and in that enchanted moment, they sensed the magic of [6] ____________.",
+        "Amidst the chaos of [1] ____________ city life, there resided a [2] ____________ known as [3] ____________.\n" +
+                "One chilly morning, while sipping coffee at a bustling [4] ____________, they collided with a [5] ____________." +
+                "\r\n\r\nTheir eyes locked, and amidst the hustle and bustle, they felt an undeniable sense of [6] ____________.",
+        "In a picturesque [1] ____________ town, there dwelled a [2] ____________ named [3] ____________.\n" +
+                "One crisp autumn day, while wandering through a vibrant [4] ____________, they crossed paths with a [5] ____________." +
+                "\r\n\r\nTheir laughter filled the air, and amid the fallen leaves, they discovered a shared passion for [6] ____________." };
+        public override string Take(int x) 
         {
             return template[x];
         }
     }
-class Horror : Madlibs
-{
-    string[] template = { "In the dark of night, [1] ____________ entered the ancient manor atop the hill. They sought the truth behind tales of [2] ____________ haunting its halls.Within, the air was heavy with the scent of [3] ____________, and eerie sounds echoed through the corridors." +
-            "Clutching their [4] ____________, they ventured forth, determined to uncover the secrets within.Suddenly, a figure emerged, eyes glinting with [5] ____________. " +
-            "Paralyzed with fear, they watched as it drew near.Recalling an ancient incantation, they spoke, releasing a burst of [6] ____________ that banished the spirit." +
-            "They fled, vowing never to return, but whispers of their encounter lingered, a reminder of the terrors that lurk within the dread manor.",
-        "In the heart of [1] ____________, there stood a decrepit mansion, its ancient walls whispering tales of [2] ____________ and despair. Legend had it that [3] ____________ roamed its halls, their anguished cries echoing through the night.\r\n\r\nBrave souls dared to enter, drawn by the promise of [4] ____________ treasures hidden within. " +
-            "But as they crossed the threshold, they felt a chill crawl down their spines, as if the very air itself was alive with malevolence." +
-            "\r\n\r\nEvery step deeper into the mansion revealed more secrets, more horrors lurking in the shadows. Cobwebs clung to the ceilings like [5] ____________, and the floorboards creaked beneath their weight as if protesting their intrusion." +
-            "\r\n\r\nThen, just as they thought they might escape, they heard it—the low, guttural moan of something not quite human. With hearts pounding, they turned to flee, only to find the door sealed shut, trapping them in the grasp of [6] _____________",
-        "In the heart of [1] ____________, hidden deep within the dense forest, there lay an ancient altar, its stones weathered by centuries of time. Whispers among the villagers spoke of [2] ____________ rituals performed under the light of the full moon, summoning dark forces from the abyss." +
-            "\r\n\r\nCuriosity or perhaps folly led a group of young adventurers to seek out the altar, their minds filled with tales of power and forbidden knowledge. They journeyed through the winding paths, each step bringing them closer to [3] ____________ they could not comprehend." +
-            "\r\n\r\nAs they reached the clearing, they felt a palpable sense of dread wash over them, the air thick with the scent of [4] ____________. Yet, undeterred, they pressed on, determined to unravel the mysteries hidden within the ancient stones." +
-            "\r\n\r\nWith trembling hands, they began the incantations, their voices trembling as they spoke the words of [5] ____________ that had long been forgotten. But as the ritual reached its climax, they felt a presence stirring in the darkness, something ancient and malevolent awakened by their foolishness." +
-            "\r\n\r\nIn a frenzy of fear, they tried to flee, but the forest seemed to twist and turn, leading them deeper into the heart of darkness. And as they disappeared into the shadows, the echoes of their screams mingled with the howling wind, a warning to all who would dare to tamper with the [6] ____________.",
-        "In the heart of [1] ____________, shrouded in mist and mystery, stood an abandoned theater, its once-grand stage now a crumbling relic of forgotten dreams. Legend had it that the ghost of a tortured performer, known only as [2] ____________, haunted its halls, forever cursed to relive the final act of their tragic life." +
-            "\r\n\r\nWhispers of [3] ____________ filled the air, tales of love betrayed and promises broken, echoing through the empty corridors like a mournful symphony. " +
-            "Those who dared to venture inside spoke of strange apparitions and ghostly voices that seemed to call out from the darkness." +
-            "\r\n\r\nBut still, there were those drawn to the theater's faded glamour, lured by the promise of uncovering its long-lost secrets. They crept through the shadows, their footsteps echoing like the beat of a distant drum, until they stood upon the stage where [4] ____________ had once performed." +
-            "\r\n\r\nAnd as they gazed out into the empty seats, they felt a chill run down their spines, as if the very air itself was heavy with the weight of [5] ____________. In that moment, they knew they were not alone, that the spirit of [6] ____________ watched their every move, forever trapped in a never-ending encore of sorrow.",
-        "In the heart of [1] ____________, beneath the shadow of an ancient oak tree, lay a hidden chamber containing a mysterious artifact, its origins lost to the sands of time. Whispers in the village spoke of [2] ____________ that surrounded the object, tales of misfortune befalling all who dared to possess it." +
-            "\r\n\r\nDespite the warnings, a bold adventurer set out to uncover the truth behind the artifact, driven by a thirst for knowledge and the promise of untold riches. They journeyed through treacherous terrain, guided only by the whispers of the wind and the faint glow of [3] ____________." +
-            "\r\n\r\nFinally, they reached the chamber, its entrance guarded by symbols of [4] ____________. With trembling hands, they reached out to claim the artifact, feeling its power coursing through their veins like a surge of electricity." +
-            "\r\n\r\nBut as they lifted it from its resting place, they felt a chill run down their spine, a sense of foreboding that they could not shake. And as they turned to leave, they heard the sound of [5] ____________ echoing through the darkness, a warning of the horrors to come." +
-            "\r\n\r\nFor they had awakened a curse that had lain dormant for centuries, a curse that would consume them and all who dared to seek the truth of [6] ____________." };
-    public override string Take(int x)
+    class Horror : Madlibs
     {
-        return template[x];
+        string[] template = { "In the dark of night, [1] ____________ entered the ancient manor atop the hill. They sought the truth behind tales of [2] ____________ haunting its halls.Within, the air was heavy with the scent of [3] ____________, and eerie sounds echoed through the corridors." +
+                "Clutching their [4] ____________, they ventured forth, determined to uncover the secrets within.Suddenly, a figure emerged, eyes glinting with [5] ____________. " +
+                "Paralyzed with fear, they watched as it drew near.Recalling an ancient incantation, they spoke, releasing a burst of [6] ____________ that banished the spirit." +
+                "They fled, vowing never to return, but whispers of their encounter lingered, a reminder of the terrors that lurk within the dread manor.",
+            "In the heart of [1] ____________, there stood a decrepit mansion, its ancient walls whispering tales of [2] ____________ and despair. Legend had it that [3] ____________ roamed its halls, their anguished cries echoing through the night.\r\n\r\nBrave souls dared to enter, drawn by the promise of [4] ____________ treasures hidden within. " +
+                "But as they crossed the threshold, they felt a chill crawl down their spines, as if the very air itself was alive with malevolence." +
+                "\r\n\r\nEvery step deeper into the mansion revealed more secrets, more horrors lurking in the shadows. Cobwebs clung to the ceilings like [5] ____________, and the floorboards creaked beneath their weight as if protesting their intrusion." +
+                "\r\n\r\nThen, just as they thought they might escape, they heard it—the low, guttural moan of something not quite human. With hearts pounding, they turned to flee, only to find the door sealed shut, trapping them in the grasp of [6] _____________",
+            "In the heart of [1] ____________, hidden deep within the dense forest, there lay an ancient altar, its stones weathered by centuries of time. Whispers among the villagers spoke of [2] ____________ rituals performed under the light of the full moon, summoning dark forces from the abyss." +
+                "\r\n\r\nCuriosity or perhaps folly led a group of young adventurers to seek out the altar, their minds filled with tales of power and forbidden knowledge. They journeyed through the winding paths, each step bringing them closer to [3] ____________ they could not comprehend." +
+                "\r\n\r\nAs they reached the clearing, they felt a palpable sense of dread wash over them, the air thick with the scent of [4] ____________. Yet, undeterred, they pressed on, determined to unravel the mysteries hidden within the ancient stones." +
+                "\r\n\r\nWith trembling hands, they began the incantations, their voices trembling as they spoke the words of [5] ____________ that had long been forgotten. But as the ritual reached its climax, they felt a presence stirring in the darkness, something ancient and malevolent awakened by their foolishness." +
+                "\r\n\r\nIn a frenzy of fear, they tried to flee, but the forest seemed to twist and turn, leading them deeper into the heart of darkness. And as they disappeared into the shadows, the echoes of their screams mingled with the howling wind, a warning to all who would dare to tamper with the [6] ____________.",
+            "In the heart of [1] ____________, shrouded in mist and mystery, stood an abandoned theater, its once-grand stage now a crumbling relic of forgotten dreams. Legend had it that the ghost of a tortured performer, known only as [2] ____________, haunted its halls, forever cursed to relive the final act of their tragic life." +
+                "\r\n\r\nWhispers of [3] ____________ filled the air, tales of love betrayed and promises broken, echoing through the empty corridors like a mournful symphony. " +
+                "Those who dared to venture inside spoke of strange apparitions and ghostly voices that seemed to call out from the darkness." +
+                "\r\n\r\nBut still, there were those drawn to the theater's faded glamour, lured by the promise of uncovering its long-lost secrets. They crept through the shadows, their footsteps echoing like the beat of a distant drum, until they stood upon the stage where [4] ____________ had once performed." +
+                "\r\n\r\nAnd as they gazed out into the empty seats, they felt a chill run down their spines, as if the very air itself was heavy with the weight of [5] ____________. In that moment, they knew they were not alone, that the spirit of [6] ____________ watched their every move, forever trapped in a never-ending encore of sorrow.",
+            "In the heart of [1] ____________, beneath the shadow of an ancient oak tree, lay a hidden chamber containing a mysterious artifact, its origins lost to the sands of time. Whispers in the village spoke of [2] ____________ that surrounded the object, tales of misfortune befalling all who dared to possess it." +
+                "\r\n\r\nDespite the warnings, a bold adventurer set out to uncover the truth behind the artifact, driven by a thirst for knowledge and the promise of untold riches. They journeyed through treacherous terrain, guided only by the whispers of the wind and the faint glow of [3] ____________." +
+                "\r\n\r\nFinally, they reached the chamber, its entrance guarded by symbols of [4] ____________. With trembling hands, they reached out to claim the artifact, feeling its power coursing through their veins like a surge of electricity." +
+                "\r\n\r\nBut as they lifted it from its resting place, they felt a chill run down their spine, a sense of foreboding that they could not shake. And as they turned to leave, they heard the sound of [5] ____________ echoing through the darkness, a warning of the horrors to come." +
+                "\r\n\r\nFor they had awakened a curse that had lain dormant for centuries, a curse that would consume them and all who dared to seek the truth of [6] ____________." };
+        public override string Take(int x)
+        {
+            return template[x];
+        }
+
+    }
+    class Happy : Madlibs
+    {
+        string[] template = { "", "", "", "", "" };
+        public override string Take(int x)
+        {
+            return template[x];
+        }
+
+    }
+    class Sad : Madlibs
+    {
+        string[] template = { "", "", "", "", "" };
+        public override string Take(int x)
+        {
+            return template[x];
+        }
+
     }
 
-}
-    class Any :Madlibs
+    class Any : Madlibs
     {
+        string[] template = { "", "", "", "", "" };
+        public override string Take(int x)
+        {
+            return template[x];
+        }
     }
     internal class Program
     {
@@ -78,7 +116,7 @@ class Horror : Madlibs
         {
             Love love = new Love();
             Random random = new Random();
-            string k=love.Take(random.Next(0,3));
+            string k=love.Take(random.Next(0,5));
             Console.WriteLine(k+"\n\n\n\n");
             Console.WriteLine("Enter first word : ");
             string str1= Console.ReadLine();
