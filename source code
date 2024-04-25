@@ -13,23 +13,20 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace MadlibsApp
 {
-    class Madlibs
+    abstract class Madlibs
     {
-        string h;
-        public string Change(string template,string str1, string str2, string str3, string str4, string str5, string str6)
+        public virtual string Change(string template, string[] str)
         {
-            template = template.Replace("[1] ____________", str1 );
-            template = template.Replace("[2] ____________", str2 );
-            template = template.Replace("[3] ____________", str3 );
-            template = template.Replace("[4] ____________", str4 );
-            template = template.Replace("[5] ____________", str5 );
-            template = template.Replace("[6] ____________", str6 );
+            template = template.Replace("[1] ____________", str[0]);
+            template = template.Replace("[2] ____________", str[1]);
+            template = template.Replace("[3] ____________", str[2]);
+            template = template.Replace("[4] ____________", str[3]);
+            template = template.Replace("[5] ____________", str[4]);
+            template = template.Replace("[6] ____________", str[5]);
             return template;
         }
-        virtual public string Take(int x)
-        {
-            return h;
-        }
+        public abstract string Take(int x);
+        
     }
     class Love : Madlibs
     {
@@ -210,58 +207,61 @@ namespace MadlibsApp
                     string k="";
                     switch(choice) 
                     {
-                        case 1: Console.WriteLine("\n!LOVE!\n-------"); k = love.Take(random.Next(0, 5));break;
-                        case 2: Console.WriteLine("\n!HORROR!\n--------"); k = horror.Take(random.Next(0, 5)); break;
-                        case 3: Console.WriteLine("\n!HAPPY!\n--------"); k = happy.Take(random.Next(0, 5)); break;
-                        case 4: Console.WriteLine("\n!SAD!\n------"); k = sad.Take(random.Next(0, 5)); break;
-                        case 5: Console.WriteLine("\n!ANY!\n------"); k = any.Take(random.Next(0, 5)); break;
+                        case 1: Console.WriteLine("\n-------\n!LOVE!\n-------"); k = love.Take(random.Next(0, 5));break;
+                        case 2: Console.WriteLine("\n-------\n!HORROR!\n--------"); k = horror.Take(random.Next(0, 5)); break;
+                        case 3: Console.WriteLine("\n-------\n!HAPPY!\n--------"); k = happy.Take(random.Next(0, 5)); break;
+                        case 4: Console.WriteLine("\n-------\n!SAD!\n------"); k = sad.Take(random.Next(0, 5)); break;
+                        case 5: Console.WriteLine("\n-------\n!ANY!\n------"); k = any.Take(random.Next(0, 5)); break;
                     }
                     Console.WriteLine( "\n" + k + "\n\n\n\n");
+                    string[] str = new string[6];
                     Console.WriteLine("Enter first word : ");
-                    string str1 = Console.ReadLine();
-                    str1 = str1.ToLower();
+                    str[0] = Console.ReadLine();
+                    str[0] = str[0].ToLower();
                     Console.WriteLine("Enter second word : ");
-                    string str2 = Console.ReadLine();
-                    str2 = str2.ToLower();
+                    str[1] = Console.ReadLine();
+                    str[1] = str[1].ToLower();
                     Console.WriteLine("Enter third word : ");
-                    string str3 = Console.ReadLine();
-                    str3 = str3.ToLower();
+                    str[2] = Console.ReadLine();
+                    str[2] = str[2].ToLower();
                     Console.WriteLine("Enter fourth word : ");
-                    string str4 = Console.ReadLine();
-                    str4 = str4.ToLower();
+                    str[3] = Console.ReadLine();
+                    str[3] = str[3].ToLower();
                     Console.WriteLine("Enter fifth word : ");
-                    string str5 = Console.ReadLine();
-                    str5 =str5.ToLower();
+                    str[4] = Console.ReadLine();
+                    str[4] = str[4].ToLower();
                     Console.WriteLine("Enter sixth word : ");
-                    string str6 = Console.ReadLine();
-                    str6 = str6.ToLower();
+                    str[5] = Console.ReadLine();
+                    str[5] = str[5].ToLower();
                     switch (choice)
                     {
-                        case 1: k = love.Change(k, str1, str2, str3, str4, str5, str6); break;
-                        case 2: k = horror.Change(k, str1, str2, str3, str4, str5, str6); break;
-                        case 3: k = happy.Change(k, str1, str2, str3, str4, str5, str6); break;
-                        case 4: k = sad.Change(k, str1, str2, str3, str4, str5, str6); break;
-                        case 5: k = any.Change(k, str1, str2, str3, str4, str5, str6); break;
+                        case 1: k = love.Change( k , str ); break;
+                        case 2: k = horror.Change( k , str ); break;
+                        case 3: k = happy.Change( k , str ); break;
+                        case 4: k = sad.Change( k , str ); break;
+                        case 5: k = any.Change( k , str ); break;
                     }
-                    Console.WriteLine("\n-----------------------------------------------\n" + k + "\n-----------------------------------------------\n");
+                    Console.WriteLine("\n---------------------------------------------------------------------------------------\n" 
+                        + k +
+                        "\n---------------------------------------------------------------------------------------\n");
                     int playagain = 0;
                     while (playagain == 0)
                     {
-                        Console.WriteLine("Do you want to play again  (Y/N)??");
+                        Console.WriteLine("Do you want to play again  [Y/N]??");
                         string l = Console.ReadLine();
                         l = l.ToUpper();
                         switch(l) 
                         {
                             case "Y": x = 0;playagain = 1; break;
                             case "N": x = 1;playagain = 1; break;
-                            default: Console.WriteLine("Wrong answer!!!\n");playagain = 0; break;
+                            default: Console.WriteLine("Improper answer!!!\nChoose [Y/N]");playagain = 0; break;
                         }
-                        Console.WriteLine("\n\n");
+                        Console.WriteLine("\n");
                     }
                 }
 
             }
+            Console.WriteLine("\n(THANKS FOR PLAYING OUR GAME!!)");
             Console.ReadKey();
         }
     }
-}
