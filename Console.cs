@@ -20,6 +20,7 @@ class MadLibs
         string TemplateName = Console.ReadLine();
         Console.WriteLine("Enter the Mad Libs template:");
         string Template = Console.ReadLine();
+
         using (StreamWriter writer = File.AppendText(TemplateName))
         {
             writer.WriteLine(Template);
@@ -43,6 +44,6 @@ class MadLibs
     
     static void FillTemplate()
     {
-        
+
     }
 }
