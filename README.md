@@ -7,6 +7,6 @@
 <li> App lets user choose type of story and it takes inputs from the user and adds them to the templates then prints it all out </li>
 </ul>
 
-**Created by:**	Salman ElHussini - 212004043, Mohammed Reda - 212001281 , ElHassan Tarek
+**Created by:**	Salman ElHussini - 212004043, Mohammed Reda - 212001281 , ElHassan Tarek - 211014198
 - 
 
