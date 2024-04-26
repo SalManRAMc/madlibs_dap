@@ -42,7 +42,7 @@ class MadLibs
 
     }
     
-    static void FillTemplate()
+    static void FillTemplate(string template, string list words)
     {
 
     }
