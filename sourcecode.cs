@@ -159,8 +159,8 @@ namespace MadlibsApp
         {
             Console.WriteLine("!!!WELCOME TO MADLIBS: THE APP!!!");
             Console.WriteLine("-----------------------------------------------");
-            Console.WriteLine("Created by: Salman ElHussini - 212004043, Mohammed Reda - 212001281 , ElHassan Tarek");
-            Console.WriteLine("-------------------------------------------------------------------------------------\n\n\n\n");
+            Console.WriteLine("Created by: Salman ElHussini - 212004043, Mohammed Reda - 212001281 , ElHassan Tarek - 211014198");
+            Console.WriteLine("--------------------------------------------------------------------------------------------------\n\n\n\n");
             Random random = new Random();
             Love love = new Love();
             Horror horror = new Horror();
