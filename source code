@@ -17,12 +17,12 @@ namespace MadlibsApp
     {
         public virtual string Change(string template, string[] str)
         {
-            template = template.Replace("[1] ____________", str[0]);
-            template = template.Replace("[2] ____________", str[1]);
-            template = template.Replace("[3] ____________", str[2]);
-            template = template.Replace("[4] ____________", str[3]);
-            template = template.Replace("[5] ____________", str[4]);
-            template = template.Replace("[6] ____________", str[5]);
+            template = template.Replace("[1] ____________", $"___{str[0]}___");
+            template = template.Replace("[2] ____________", $"___{str[1]}___");
+            template = template.Replace("[3] ____________", $"___{str[2]}___");
+            template = template.Replace("[4] ____________", $"___{str[3]}___");
+            template = template.Replace("[5] ____________", $"___{str[4]}___");
+            template = template.Replace("[6] ____________", $"___{str[5]}___");
             return template;
         }
         public abstract string Take(int x);
@@ -265,3 +265,4 @@ namespace MadlibsApp
             Console.ReadKey();
         }
     }
+}
