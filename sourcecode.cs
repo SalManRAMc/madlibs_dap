@@ -1,4 +1,5 @@
 using System;
+using WMPLib;
 
 namespace MadlibsApp
 {
@@ -15,7 +16,7 @@ namespace MadlibsApp
             return template;
         }
         public abstract string Take(int x);
-        
+        public abstract void MadTheme();
     }
     class Love : Madlibs
     {
@@ -37,6 +38,13 @@ namespace MadlibsApp
         public override string Take(int x) 
         {
             return template[x];
+        }
+
+        public override void MadTheme()
+        {
+            WindowsMediaPlayer lovenoise = new WindowsMediaPlayer();
+            lovenoise.URL = "SOUND EFFECT LOVE MOMENT.mp3";
+            lovenoise.controls.Play();
         }
     }
     class Horror : Madlibs
@@ -69,6 +77,13 @@ namespace MadlibsApp
             return template[x];
         }
 
+        public override void MadTheme()
+        {
+            WindowsMediaPlayer horrornoise = new WindowsMediaPlayer();
+            horrornoise.URL = "ROBLOX Music Horror.mp3";
+            lovenoise.controls.Play();
+        }
+
     }
     class Happy : Madlibs
     {
@@ -88,6 +103,12 @@ namespace MadlibsApp
         public override string Take(int x)
         {
             return template[x];
+        }
+        public override void MadTheme()
+        {
+            WindowsMediaPlayer HappyNoise = new WindowsMediaPlayer();
+            HappyNoise.URL = "March my man.mp3";
+            HappyNoise.controls.Play();
         }
 
     }
@@ -115,6 +136,12 @@ namespace MadlibsApp
             return template[x];
         }
 
+        public override void MadTheme()
+        {
+            WindowsMediaPlayer sad = new WindowsMediaPlayer();
+            sad.URL = "Resting Grounds.mp3";
+            sad.controls.Play();
+        }
     }
 
     class Any : Madlibs
@@ -140,6 +167,13 @@ namespace MadlibsApp
         public override string Take(int x)
         {
             return template[x];
+        }
+
+        public override void MadTheme()
+        {
+            WindowsMediaPlayer chaos = new WindowsMediaPlayer();
+            chaos.URL = "Orchestrated Chaos.mp3";
+            chaos.controls.Play();
         }
     }
     internal class Program
@@ -190,17 +224,31 @@ namespace MadlibsApp
                 { x = 1; }
                 else
                 {
-
                     if (choice == 6)
-                    { choice = random.Next(1, 6); }
+                    {   
+                        choice = random.Next(1, 6);
+                    } 
                     string k="";
                     switch(choice) 
                     {
-                        case 1: Console.WriteLine("\n-------\n!LOVE!\n-------"); k = love.Take(random.Next(0, 5));break;
-                        case 2: Console.WriteLine("\n-------\n!HORROR!\n--------"); k = horror.Take(random.Next(0, 5)); break;
-                        case 3: Console.WriteLine("\n-------\n!HAPPY!\n--------"); k = happy.Take(random.Next(0, 5)); break;
-                        case 4: Console.WriteLine("\n-------\n!SAD!\n------"); k = sad.Take(random.Next(0, 5)); break;
-                        case 5: Console.WriteLine("\n-------\n!ANY!\n------"); k = any.Take(random.Next(0, 5)); break;
+                        case 1: 
+                            Console.WriteLine("\n-------\n!LOVE!\n-------"); k = love.Take(random.Next(0, 5));
+                            love.MadTheme();
+                            break;
+                        case 2: 
+                            Console.WriteLine("\n-------\n!HORROR!\n--------"); k = horror.Take(random.Next(0, 5));
+                            horror.MadTheme();
+                            break;
+                        case 3: 
+                            Console.WriteLine("\n-------\n!HAPPY!\n--------"); k = happy.Take(random.Next(0, 5)); 
+                            happy.MadTheme();
+                            break;
+                        case 4: Console.WriteLine("\n-------\n!SAD!\n------"); k = sad.Take(random.Next(0, 5));
+                            sad.MadTheme();
+                            break;                            
+                        case 5: Console.WriteLine("\n-------\n!ANY!\n------"); k = any.Take(random.Next(0, 5)); 
+                            any.MadTheme();
+                            break;
                     }
                     Console.WriteLine( "\n" + k + "\n\n\n\n");
                     string[] str = new string[6];
@@ -230,6 +278,7 @@ namespace MadlibsApp
                         case 4: k = sad.Change( k , str ); break;
                         case 5: k = any.Change( k , str ); break;
                     }
+                    
                     Console.WriteLine("\n---------------------------------------------------------------------------------------\n" 
                         + k +
                         "\n---------------------------------------------------------------------------------------\n");
