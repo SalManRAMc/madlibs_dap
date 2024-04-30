@@ -1,0 +1,18 @@
+C:\Users\salma\source\repos\Madlibs GUI\bin\Debug\net8.0-windows\Madlibs GUI.exe
+C:\Users\salma\source\repos\Madlibs GUI\bin\Debug\net8.0-windows\Madlibs GUI.deps.json
+C:\Users\salma\source\repos\Madlibs GUI\bin\Debug\net8.0-windows\Madlibs GUI.runtimeconfig.json
+C:\Users\salma\source\repos\Madlibs GUI\bin\Debug\net8.0-windows\Madlibs GUI.dll
+C:\Users\salma\source\repos\Madlibs GUI\bin\Debug\net8.0-windows\Madlibs GUI.pdb
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs_GUI.Form1.resources
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.csproj.GenerateResource.cache
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.AssemblyInfoInputs.cache
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.AssemblyInfo.cs
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.csproj.CoreCompileInputs.cache
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.dll
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\refint\Madlibs GUI.dll
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.pdb
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs GUI.genruntimeconfig.cache
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\ref\Madlibs GUI.dll
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs_GUI.selectionmenu.resources
+C:\Users\salma\source\repos\Madlibs GUI\obj\Debug\net8.0-windows\Madlibs_GUI.prompt.resources
